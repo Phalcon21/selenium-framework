@@ -1,0 +1,20 @@
+{
+  "test1": {
+    "name": "Anar",
+    "phone": "994551234567",
+    "email": "anar@mail.ru",
+    "country": "Azerbaijan",
+    "city": "Baku",
+    "username": "AnarM",
+    "password": "12345"
+  },
+  "test2": {
+    "name": "Turan",
+    "phone": "994559876543",
+    "email": "turan@mail.ru",
+    "country": "Azerbaijan",
+    "city": "Baku",
+    "username": "TuranA",
+    "password": "09876"
+  }
+}
