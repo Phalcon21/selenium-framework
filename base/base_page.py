@@ -1,4 +1,5 @@
 import time
+from selenium.common import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -11,13 +12,20 @@ class BasePage(object):
         return WebDriverWait(self.driver, timeout).until(
             EC.presence_of_element_located((by, value)))
 
-    def wait_for_presence_of_all_elements(self, locator_type, locator, timeout=10):
+    def wait_for_presence_of_all_elements(self, by, value, timeout=10):
         wait = WebDriverWait(self.driver, timeout)
-        return wait.until(EC.presence_of_all_elements_located((locator_type, locator)))
+        return wait.until(EC.presence_of_all_elements_located((by, value)))
 
-    def wait_until_element_is_clickable(self, locator_type, locator, timeout=10):
+    def wait_until_element_is_clickable(self, by, value, timeout=10):
         wait = WebDriverWait(self.driver, timeout)
-        return wait.until(EC.element_to_be_clickable((locator_type, locator)))
+        return wait.until(EC.element_to_be_clickable((by, value)))
+
+    def is_element_present(self, by, value, timeout=10):
+        try:
+            WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((by, value)))
+            return True
+        except TimeoutException:
+            return False
 
     def page_scroll(self, timeout=10, interval=1):
         last_height = self.driver.execute_script("return document.body.scrollHeight")
