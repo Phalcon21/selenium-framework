@@ -52,8 +52,8 @@ class RegistrationPage(BasePage):
         print(submit_button)
         # submit_button.click()
 
-    def success_alert_message(self):
-        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.ALERT))
+    def success_alert_message(self, timeout=10):
+        WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(self.ALERT))
         alert_message = self.wait_for_element(*self.ALERT).text
         print(alert_message)
         return alert_message
