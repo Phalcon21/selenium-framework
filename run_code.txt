@@ -1,1 +1,0 @@
-pytest -v --browser chrome --url https://way2automation.com/way2auto_jquery/index.php --html=reports/report.html --self-contained-html
