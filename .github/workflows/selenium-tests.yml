@@ -37,7 +37,7 @@ jobs:
       - name: Run Selenium Tests with Pytest
         run: pytest --browser ${{ matrix.browser }} --url ${{ env.TEST_URL }} --html=reports/report.html
 
-      - name: Upload HTML Report and Screenshots
+      - name: Upload HTML Report, Screenshots, and Assets
         if: always()
         uses: actions/upload-artifact@v3
         with:
@@ -45,3 +45,4 @@ jobs:
           path: |
             reports/report.html
             reports/screenshots/
+            reports/assets/
