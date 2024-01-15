@@ -16,8 +16,7 @@ class TestExampleOne(softest.TestCase):
         self.registration_page = RegistrationPage(self.driver)
 
     def test_title(self):
-        assert "asdfsdfh" in self.driver.title
-        time.sleep(3)
+        assert "Welcome" in self.driver.title
 
     # @data(("Anar", "+994551234567", "anar@mail.ru", "Azerbaijan", "Baku", "AnarM", "12345"))
     # @unpack
@@ -32,4 +31,3 @@ class TestExampleOne(softest.TestCase):
         self.registration_page.enter_username(username)
         self.registration_page.enter_password(password)
         self.log.info("Finished")
-        time.sleep(3)

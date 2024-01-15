@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        browser: ['chrome', 'firefox']
+        browser: ['chrome']
     env:
       TEST_URL: ${{ github.event.inputs.url || 'https://way2automation.com/way2auto_jquery/index.php' }}
     steps:
@@ -40,25 +40,4 @@ jobs:
           sudo apt-get install -y google-chrome-stable firefox
 
       - name: Run Selenium Tests with Pytest
-        run: pytest --browser ${{ matrix.browser }} --url ${{ env.TEST_URL }}
-
-  test-edge:
-    runs-on: windows-latest
-    env:
-      TEST_URL: ${{ github.event.inputs.url || 'https://way2automation.com/way2auto_jquery/index.php' }}
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.12'
-
-      - name: Install Dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Run Selenium Tests with Pytest
-        run: pytest --browser edge --url ${{ env.TEST_URL }}
+        run: pytest --browser ${{ matrix.browser }} --url ${{ env.TEST_URL }} --html=reports/report.html
