@@ -13,8 +13,8 @@ on:
         default: 'https://way2automation.com/way2auto_jquery/index.php'
 
 jobs:
-  test-linux-browsers:
-    runs-on: ubuntu-latest
+  test-windows-browsers:
+    runs-on: windows-latest
     strategy:
       matrix:
         browser: ['chrome']
