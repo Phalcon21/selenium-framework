@@ -9,6 +9,7 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.edge.service import Service as EdgeService
+from selenium.webdriver.chrome.options import Options as ChromeOptions
 
 
 # This function adds the command-line option --browser
@@ -32,6 +33,11 @@ def url(request):
 @pytest.fixture(scope="class", autouse=True)
 def setup(request, browser, url):
     if browser == "chrome":
+        chrome_options = ChromeOptions()
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--disable-gpu")
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     elif browser == "firefox":
         driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
