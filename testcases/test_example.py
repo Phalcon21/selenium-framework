@@ -16,7 +16,7 @@ class TestExampleOne(softest.TestCase):
         self.registration_page = RegistrationPage(self.driver)
 
     def test_title(self):
-        assert "Welcome" in self.driver.title
+        assert "ssdg" in self.driver.title
 
     # @data(("Anar", "+994551234567", "anar@mail.ru", "Azerbaijan", "Baku", "AnarM", "12345"))
     # @unpack
