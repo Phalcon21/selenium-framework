@@ -4,3 +4,4 @@ selenium==4.16.0
 softest==1.2.0.0
 webdriver_manager==4.0.1
 pytest-html==4.1.1
+pytest-ordering==0.6
